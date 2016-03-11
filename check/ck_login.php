@@ -164,6 +164,7 @@
                     <td>".$tipoLOG."</td>
                     <td>".$userLOG."</td>
                     <td>".$pswdLOG."</td>
+                    <td></td>
                     </tr>";
                 }
                 mysqli_close($conndb);

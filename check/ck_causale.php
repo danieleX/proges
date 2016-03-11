@@ -157,6 +157,7 @@
                 <td>".$id."</td>
                 <td>".$tipo."</td>
                 <td>".$descr."</td>
+                <td></td>
                 </tr>";
             }
             mysqli_close($conndb);

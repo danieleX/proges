@@ -9,7 +9,7 @@ id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 aliquota INT(3) NOT NULL,
 descr VARCHAR(100) NULL,
 reg_date TIMESTAMP,
-UNIQUE (aliquota)
+UNIQUE (id)
 )";
 
 if (mysqli_query($conndb, $sql_iva)) {

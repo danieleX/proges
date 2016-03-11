@@ -141,6 +141,7 @@
                 <th>ID</th>
                 <th>Tipo</th>
                 <th>Descrizione</th>
+                <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
@@ -156,6 +157,7 @@
                 <td>".$id."</td>
                 <td>".$tipo."</td>
                 <td>".$descr."</td>
+                <td></td>
                 </tr>";
             }
             mysqli_close($conndb);
