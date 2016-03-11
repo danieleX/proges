@@ -21,9 +21,4 @@
 		content: '#user-toolbar-options',
 		position: 'vertical-bottom'
 	});
-
-<<<<<<< HEAD
 })(jQuery);
-=======
-})(jQuery);
->>>>>>> proges/master

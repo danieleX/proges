@@ -108,9 +108,4 @@
       $checkbox.checkbox();
     });
   });
-
-<<<<<<< HEAD
 }(window.jQuery);
-=======
-}(window.jQuery);
->>>>>>> proges/master

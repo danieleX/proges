@@ -26,8 +26,3 @@
             $("#ibanAc").html(ibanAc);
             $("#bancaAc").html(bancaAc);
             $('#clientModal').modal('toggle');
-<<<<<<< HEAD
-        }
-=======
-        }
->>>>>>> proges/master
