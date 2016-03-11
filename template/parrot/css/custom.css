@@ -1,0 +1,28 @@
+h1 {
+    color: #EA640C;
+}
+
+.logo {
+    width: 70px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+.beautyTag {
+    width: auto;
+    background: black;
+    border: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.widthAuto {
+    width: auto;
+    display: inline-block;
+    margin: 5px;
+}
+
+.modalClienti bold {
+    font-weight: bold;
+}

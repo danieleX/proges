@@ -1,0 +1,71 @@
+@import url(normalize.css);
+/* line 3, D:/xampp/htdocs/www/gestionale/css/style.scss */
+.loginContainer {
+  color: #071E3F;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #071E3F; }
+  /* line 11, D:/xampp/htdocs/www/gestionale/css/style.scss */
+  .loginContainer .container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: inherit; }
+    /* line 15, D:/xampp/htdocs/www/gestionale/css/style.scss */
+    .loginContainer .container .loginForm {
+      margin: auto;
+      width: 300px;
+      background: #EA640C;
+      padding: 30px;
+      box-shadow: 1px 1px 10px 1px #2F1603; }
+      /* line 21, D:/xampp/htdocs/www/gestionale/css/style.scss */
+      .loginContainer .container .loginForm .loginInputs {
+        display: inline-block;
+        margin: auto;
+        border: solid 1px #071E3F;
+        height: 40px;
+        padding: 0px 15px;
+        margin-top: 5px;
+        width: 100%; }
+        /* line 29, D:/xampp/htdocs/www/gestionale/css/style.scss */
+        .loginContainer .container .loginForm .loginInputs:nth-last-child(1) {
+          margin-bottom: 5px; }
+      /* line 33, D:/xampp/htdocs/www/gestionale/css/style.scss */
+      .loginContainer .container .loginForm .loginSubmit {
+        text-align: right;
+        margin-top: 5px; }
+        /* line 36, D:/xampp/htdocs/www/gestionale/css/style.scss */
+        .loginContainer .container .loginForm .loginSubmit input {
+          border: solid 1px #071E3F;
+          background: #FFF;
+          height: 40px;
+          padding-left: 20px;
+          padding-right: 20px;
+          color: #071E3F;
+          background: #FFF;
+          transition: 1s; }
+          /* line 45, D:/xampp/htdocs/www/gestionale/css/style.scss */
+          .loginContainer .container .loginForm .loginSubmit input:hover {
+            transition: 1s;
+            color: #FFF;
+            background: #071E3F; }
+    /* line 54, D:/xampp/htdocs/www/gestionale/css/style.scss */
+    .loginContainer .container .loginLegendContainer {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      color: #000; }
+      /* line 59, D:/xampp/htdocs/www/gestionale/css/style.scss */
+      .loginContainer .container .loginLegendContainer .loginLegend {
+        padding: 0px 20px;
+        overflow: hidden;
+        text-align: left;
+        width: 500px;
+        max-width: 80%;
+        background: #EA640C;
+        margin: auto;
+        box-shadow: 1px 1px 10px 1px #2F1603; }
+
+/*# sourceMappingURL=style.css.map */
