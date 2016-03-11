@@ -551,11 +551,7 @@
     } else {
       hide($cancelBtn);
     }
-<<<<<<< HEAD
 
-=======
-
->>>>>>> proges/master
     //Confirm button
     modal.setAttribute('data-has-confirm-button', params.showConfirmButton);
     if (params.showConfirmButton) {
@@ -563,11 +559,6 @@
     } else {
       hide($confirmBtn);
     }
-<<<<<<< HEAD
-
-=======
-
->>>>>>> proges/master
 
     // Edit text on cancel and confirm buttons
     if (params.cancelButtonText) {
