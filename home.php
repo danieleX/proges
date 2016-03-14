@@ -25,6 +25,15 @@
                 </div>
             </div>
         </div>
+
+    <div class="container">
+        <div>
+            <form action="gen_documenti/index.html">
+                <input style="width: auto" class="form-control" type="submit" value="Genera carta intestata">
+            </form>
+        </div>
+    </div>
+
     <?php include_once("template/parrot/foot.php") ?>
 	</body>
 </html>

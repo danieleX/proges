@@ -27,6 +27,14 @@
             </div>
         </div>
 
+    <div class="container">
+        <div>
+            <form action="gen_documenti/ddt.html">
+                <input style="width: auto" class="form-control" type="submit" value="Genera DDT">
+            </form>
+        </div>
+    </div>
+
     <?php include_once("template/parrot/foot.php") ?>
 
 </body>

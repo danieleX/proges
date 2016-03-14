@@ -1,0 +1,97 @@
+<html>
+<head>
+    <title>Carta Intestata</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="all">
+    <style>
+        body {
+            background: url(img/filig.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+        }
+        .logo {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media print {
+            body {
+            background: url(img/filig.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            }
+            p {
+                font-size: 7pt;
+            }
+            .logo {
+                max-width: 100%;
+                width: 100px;
+                height: auto;
+            }
+            #sottotabella {
+                border: none !important;
+                border-collapse: collapse;
+            }
+
+            page {
+                size: a4;
+            }
+
+            footer {
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+            }
+            footer span {
+                font-size: 7pt;
+            }
+            #stampa {
+                display: none;
+            }
+
+        }
+
+    </style>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    <page>
+        <header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <img class="logo" src="img/logo_small.png" width="150" height="150">
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="text-right">
+                            <h3>Stampa Commerciale</h3>
+                            <p>Etichette autoadesive in bobina</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr>
+            </div>
+        </header>
+        <div style="background: #FFF" class="container-fluid">
+
+        </div>
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <hr>
+                        <span class="pie">90011 Bagheria (PA) - Via Cortile Greco, 15 - Tel. 091 931949 - Fax 091 934277 - Capitale Sociale € 72.000,00 int. vers. - Partita IVA 06042040821</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </page>
+    <div id="stampa" class="container-fluid text-center"><span class="h1"><a href="#" onclick="window.print()"><span class="glyphicon glyphicon-print"></span> Stampa</a></span></div>
+</body>
+</html>
