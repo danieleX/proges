@@ -193,9 +193,10 @@ if ($conndb->query($sql_cont) === TRUE) {
                     <input type="text" class="form-control widthAuto" name="emailAC" placeholder="e-Mail">
                     <input type="text" class="form-control widthAuto" name="urlAC" placeholder="URL sito web">
                     <h4>Scheda contabilita'</h4>
-                    <input type="text" class="form-control widthAuto" name="CFC" placeholder="Codice Fiscale (no spazi)">
-                    <input type="text" class="form-control widthAuto" name="IBANC" placeholder="Codice IBAN (no spazi)">
-                    <input type="text" class="form-control widthAuto" name="bancaC" placeholder="Nome banca"><br/>
+                    <input class="form-control widthAuto" type="text" name="PIVAC" placeholder="Partita IVA">
+                    <input class="form-control widthAuto" type="text" name="CFC" placeholder="Codice Fiscale (no spazi)"><br/>
+                    <input class="form-control widthAuto" type="text" name="IBANC" placeholder="Codice IBAN (no spazi)">
+                    <input class="form-control widthAuto" type="text" name="bancaC" placeholder="Nome banca"><br/>
                     <input class="form-control widthAuto" type="submit" value="Crea Cliente">
                 </form>
             </div>

@@ -46,7 +46,7 @@
                 <th>Codice</th>
                 <th>Descrizione</th>
                 <th>Note</th>
-                <th>Telefono legale</th>
+                <th>Telefono</th>
                 <th>P.IVA</th>
                 <th>Cod Fisc</th>
                 <th>+ info</th>
@@ -87,7 +87,6 @@
                 <td>".$descrF."</td>
                 <td>".$noteF."</td>
                 <td>".$telLF."</td>
-                <td>".$faxLF."</td>
                 <td>".$PIVAF."</td>
                 <td>".$CFF."</td>
                 <td>
