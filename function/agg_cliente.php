@@ -1,6 +1,5 @@
 <?php
    include("../DB/config.php");
-   session_start();
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -38,6 +37,7 @@ $sql_gen = "INSERT INTO clienti_gen (nomeC, cognomeC, codC, descrC, noteC) VALUE
 
 //controllo inserimento
 if ($conndb->query($sql_gen) === TRUE) {
+
     $ok_gen = "
           <div class=\"alert alert-success alert-dismissable\">
           Inserimento dati generali effettuato con <strong>successo.</strong>
@@ -54,7 +54,6 @@ if ($conndb->query($sql_gen) === TRUE) {
 //inserisci dati in tabella clienti legale
 $sql_leg = "INSERT INTO clienti_leg (indirizzoLC, cittaLC, capLC, provLC, telLC, faxLC, statoLC, emailLC, urlLC) VALUES ('$indirizzoLC', '$cittaLC', '$capLC', '$provLC', '$telLC', '$faxLC', '$statoLC', '$emailLC', '$urlLC')";
 
-//controllo inserimento
 if ($conndb->query($sql_leg) === TRUE) {
     $ok_leg = "
           <div class=\"alert alert-success alert-dismissable\">
@@ -68,6 +67,9 @@ if ($conndb->query($sql_leg) === TRUE) {
          </div>
          ";
 }
+
+//controllo inserimento
+
 
 //inserisci dati in tabella clienti amministrativo
 $sql_amm = "INSERT INTO clienti_amm (indirizzoAC, cittaAC, capAC, provAC, telAC, cellAC, statoAC, emailAC, urlAC) VALUES ('$indirizzoAC', '$cittaAC', '$capAC', '$provAC', '$telAC', '$cellAC', '$statoAC', '$emailAC', '$urlAC')";

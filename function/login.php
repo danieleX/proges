@@ -12,7 +12,7 @@
       $sql = "SELECT id FROM login WHERE tipoLOG = '$tipoFORM' AND userLOG = '$userFORM' AND pswdLOG = '$pswdFORM'";
       $ris = mysqli_query($conndb,$sql);
       $rec = mysqli_fetch_array($ris,MYSQLI_ASSOC);
-      $active = $rec['active'];
+      $active = @$rec['active'];
 
       $count = mysqli_num_rows($ris);
 
@@ -105,7 +105,7 @@
                                          <input type="password" name="pswdFORM" class="form-control" placeholder="Password">
                                      </div>
                                      <input class="btn btn-block btn-primary btn-embossed" type="submit" value="Login"><br>
-                                     <?php echo $ok; echo $no; ?>
+                                     <?php echo @$ok; echo @$no; ?>
                                  </div>
 
                              <div class="clearfix"></div>
