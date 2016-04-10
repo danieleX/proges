@@ -9,4 +9,5 @@
 	<script src="http://<?php echo $base_url ?>/template/parrot/js/bootstrap-switch.js"></script>
 	<script src="http://<?php echo $base_url ?>/template/parrot/js/toolbar.js"></script>
 	<script src="http://<?php echo $base_url ?>/template/parrot/js/application.js"></script>
+    <script src="http://<?php echo $base_url ?>/template/parrot/plugins/jQuery-Autocomplete/dist/jquery.autocomplete.min.js"></script>
     <script src="http://<?php echo $base_url ?>/template/parrot/js/custom.js"></script>
