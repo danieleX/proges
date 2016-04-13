@@ -2,15 +2,10 @@
 include("../DB/config.php");
 $check = @$_GET["check"];
 
-$sql_clienti = "SELECT nomeC, cognomeC, CFC FROM clienti_gen
-INNER JOIN clienti_cont ON clienti_gen.id=clienti_cont.id
-WHERE clienti_gen.nomeC LIKE \"%".$check."%\" OR
-clienti_gen.cognomeC LIKE \"%".$check."%\" OR
-clienti_cont.CFC LIKE \"%".$check."%\"";
+$sql_clienti = "SELECT nomeC, cognomeC, CFC FROM clienti WHERE nomeC LIKE \"%".$check."%\" OR cognomeC LIKE \"%".$check."%\" OR CFC LIKE \"%".$check."%\"";
 
 //echo $sql_clienti;
 $result = $conndb->query($sql_clienti);
-
 
 $newKey = array();
 $key = 0;

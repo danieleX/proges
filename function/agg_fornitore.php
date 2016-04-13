@@ -25,7 +25,7 @@
         $bancaF = mysqli_real_escape_string($conndb,$_POST['bancaF']);
 
       //inserisci dati in tabella clienti generale
-$sql_gen = "INSERT INTO fornitori_gen (nomeF, cognomeF, codF, descrF, noteF, indirizzoLF, cittaLF, capLF, provLF, telLF, faxLF, statoLF, emailLF, urlLF, PIVAF, CFF, IBANF, bancaF) VALUES ('$nomeF', '$cognomeF', '$codF', '$descrF', '$noteF', '$indirizzoLF', '$cittaLF', '$capLF', '$provLF', '$telLF', '$faxLF', '$statoLF', '$emailLF', '$urlLF', '$PIVAF', '$CFF', '$IBANF', '$bancaF')";
+$sql_gen = "INSERT INTO fornitori (nomeF, cognomeF, codF, descrF, noteF, indirizzoLF, cittaLF, capLF, provLF, telLF, faxLF, statoLF, emailLF, urlLF, PIVAF, CFF, IBANF, bancaF) VALUES ('$nomeF', '$cognomeF', '$codF', '$descrF', '$noteF', '$indirizzoLF', '$cittaLF', '$capLF', '$provLF', '$telLF', '$faxLF', '$statoLF', '$emailLF', '$urlLF', '$PIVAF', '$CFF', '$IBANF', '$bancaF')";
 
 //controllo inserimento
 if ($conndb->query($sql_gen) === TRUE) {
@@ -40,7 +40,7 @@ if ($conndb->query($sql_gen) === TRUE) {
          Errore durante l'inserimento dati generali: $conndb->error;
          </div>
          ";
-}
+} }
 
 ?>
 

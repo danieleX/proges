@@ -193,62 +193,62 @@ UNIQUE (userLOG)
 )";
 
 if (mysqli_query($conndb, $sql_log)) {
-    echo "Tabella login creata con successo";
+    echo "Tabella login creata con successo'<br/>'";
     header('Refresh: 3; URL = homeDB.php');
 } else {
-    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+    echo "C'e' stato un errore creando la tabella login: " . mysqli_error($conndb) . '<br/>';
 }
 
 //creo tabella numerazione fattura
 $sql_nf = "CREATE TABLE numerazione_ftt (
 id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-reg_date TIMESTAMP,
+reg_date TIMESTAMP
 )";
 
 if (mysqli_query($conndb, $sql_nf)) {
-    echo "Tabella numerazione fattura creata con successo";
+    echo "Tabella numerazione fattura creata con successo'<br/>'";
     header('Refresh: 3; URL = homeDB.php');
 } else {
-    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+    echo "C'e' stato un errore creando la tabella numerazione fattura: " . mysqli_error($conndb) . '<br/>';
 }
 
 //creo tabella numerazione DocumentoDiTrasporto
 $sql_nd = "CREATE TABLE numerazione_ddt (
 id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-reg_date TIMESTAMP,
+reg_date TIMESTAMP
 )";
 
 if (mysqli_query($conndb, $sql_nd)) {
-    echo "Tabella numerazione DDT creata con successo";
+    echo "Tabella numerazione DDT creata con successo'<br/>'";
     header('Refresh: 3; URL = homeDB.php');
 } else {
-    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+    echo "C'e' stato un errore creando la tabella numerazione DDT: " . mysqli_error($conndb) . '<br/>';
 }
 
 //creo tabella numerazione NotaDiCredito
 $sql_nn = "CREATE TABLE numerazione_ndc (
 id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-reg_date TIMESTAMP,
+reg_date TIMESTAMP
 )";
 
 if (mysqli_query($conndb, $sql_nn)) {
-    echo "Tabella numerazione NDC creata con successo";
+    echo "Tabella numerazione NDC creata con successo'<br/>'";
     header('Refresh: 3; URL = homeDB.php');
 } else {
-    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+    echo "C'e' stato un errore creando la tabella numerazione NDC: " . mysqli_error($conndb) . '<br/>';
 }
 
 //creo tabella numerazione preventivi
 $sql_np = "CREATE TABLE numerazione_p (
 id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-reg_date TIMESTAMP,
+reg_date TIMESTAMP
 )";
 
 if (mysqli_query($conndb, $sql_np)) {
-    echo "Tabella numerazione preventivi creata con successo";
+    echo "Tabella numerazione preventivi creata con successo'<br/>'";
     header('Refresh: 3; URL = homeDB.php');
 } else {
-    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+    echo "C'e' stato un errore creando la tabella numerazione preventivi: " . mysqli_error($conndb) . '<br/>';
 }
 
 mysqli_close($conndb);

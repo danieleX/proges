@@ -49,7 +49,7 @@ if ($conndb->query($sql_gen) === TRUE) {
          Errore durante l'inserimento dati: $conndb->error;
          </div>
          ";
-}
+} }
 
 ?>
 
