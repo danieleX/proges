@@ -1,5 +1,6 @@
 <?php
    include("../DB/config.php");
+   session_start();
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -33,80 +34,22 @@
         $bancaC = mysqli_real_escape_string($conndb,$_POST['bancaC']);
 
       //inserisci dati in tabella clienti generale
-$sql_gen = "INSERT INTO clienti_gen (nomeC, cognomeC, codC, descrC, noteC) VALUES ('$nomeC', '$cognomeC', '$codC', '$descrC', '$noteC')";
+$sql_gen = "INSERT INTO clienti (nomeC, cognomeC, codC, descrC, noteC, indirizzoLC, cittaLC, capLC, provLC, telLC, faxLC, statoLC, emailLC, urlLC, indirizzoAC, cittaAC, capAC, provAC, telAC, cellAC, statoAC, emailAC, urlAC, PIVAC, CFC, IBANC, bancaC) VALUES ('$nomeC', '$cognomeC', '$codC', '$descrC', '$noteC', '$indirizzoLC', '$cittaLC', '$capLC', '$provLC', '$telLC', '$faxLC', '$statoLC', '$emailLC', '$urlLC', '$indirizzoAC', '$cittaAC', '$capAC', '$provAC', '$telAC', '$cellAC', '$statoAC', '$emailAC', '$urlAC', '$PIVAC', '$CFC', '$IBANC', '$bancaC')";
 
 //controllo inserimento
 if ($conndb->query($sql_gen) === TRUE) {
-
-    $ok_gen = "
+    $ok = "
           <div class=\"alert alert-success alert-dismissable\">
-          Inserimento dati generali effettuato con <strong>successo.</strong>
+          Inserimento dati effettuato con <strong>successo.</strong>
           </div>
           ";
 } else {
-    $no_gen = "
+    $no = "
          <div class=\"alert alert-danger alert-dismissable\">
-         Errore durante l'inserimento dati generali: $conndb->error;
+         Errore durante l'inserimento dati: $conndb->error;
          </div>
          ";
 }
-
-//inserisci dati in tabella clienti legale
-$sql_leg = "INSERT INTO clienti_leg (indirizzoLC, cittaLC, capLC, provLC, telLC, faxLC, statoLC, emailLC, urlLC) VALUES ('$indirizzoLC', '$cittaLC', '$capLC', '$provLC', '$telLC', '$faxLC', '$statoLC', '$emailLC', '$urlLC')";
-
-if ($conndb->query($sql_leg) === TRUE) {
-    $ok_leg = "
-          <div class=\"alert alert-success alert-dismissable\">
-          Inserimento dati legali effettuato con <strong>successo.</strong>
-          </div>
-          ";
-} else {
-    $no_leg = "
-         <div class=\"alert alert-danger alert-dismissable\">
-         Errore durante l'inserimento dati sede legale: $conndb->error;
-         </div>
-         ";
-}
-
-//controllo inserimento
-
-
-//inserisci dati in tabella clienti amministrativo
-$sql_amm = "INSERT INTO clienti_amm (indirizzoAC, cittaAC, capAC, provAC, telAC, cellAC, statoAC, emailAC, urlAC) VALUES ('$indirizzoAC', '$cittaAC', '$capAC', '$provAC', '$telAC', '$cellAC', '$statoAC', '$emailAC', '$urlAC')";
-
-//controllo inserimento
-if ($conndb->query($sql_amm) === TRUE) {
-    $ok_amm = "
-          <div class=\"alert alert-success alert-dismissable\">
-          Inserimento dati sede amministrativaeffettuato con <strong>successo.</strong>
-          </div>
-          ";
-} else {
-    $no_amm = "
-         <div class=\"alert alert-danger alert-dismissable\">
-         Errore durante l'inserimento dati sede amministrativa: $conndb->error;
-         </div>
-         ";
-}
-
-//inserisci dati in tabella clienti contabilità
-$sql_cont = "INSERT INTO clienti_cont (PIVAC, CFC, IBANC, bancaC) VALUES ('$PIVAC', '$CFC', '$IBANC', '$bancaC')";
-
-//controllo inserimento
-if ($conndb->query($sql_cont) === TRUE) {
-    $ok_cont = "
-          <div class=\"alert alert-success alert-dismissable\">
-          Inserimento dati contabilita' effettuato con <strong>successo.</strong>
-          </div>
-          ";
-} else {
-    $no_cont = "
-         <div class=\"alert alert-danger alert-dismissable\">
-         Errore durante l'inserimento dati contabilita': $conndb->error;
-         </div>
-         ";
-}
-   }
 
 ?>
 
@@ -126,9 +69,6 @@ if ($conndb->query($sql_cont) === TRUE) {
     <?php include_once("session.php"); ?>
 
     <style>
-        /*
-        * Ma gli stili li lasciamo qua? Ma per ora si. non ce ne saranno molti tanto. poi li raggruppiamo e facciamo file dedicato
-        */
 
         .login_ {
             margin: auto;
@@ -161,7 +101,7 @@ if ($conndb->query($sql_cont) === TRUE) {
         <?php include_once("./../template/parrot/navbar.php") ?>
 
 <div class="container">
-                <small><?php echo $ok_gen; echo $no_gen; echo $ok_leg; echo $no_leg; echo $ok_amm; echo $no_amm; echo $ok_cont; echo $no_cont; ?></small>
+                <small><?php echo $ok; echo $no; ?></small>
 </div>
 
         <div class="componant-section">

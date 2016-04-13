@@ -55,9 +55,7 @@
         <tbody>
             <?php
             include("DB/config.php");
-            $sql = "SELECT * FROM fornitori_gen
-            INNER JOIN fornitori_leg ON fornitori_gen.id=fornitori_leg.id
-            INNER JOIN fornitori_cont ON fornitori_gen.id=fornitori_cont.id ";
+            $sql = "SELECT * FROM fornitori";
             $result = mysqli_query($conndb, $sql);
             while($row = mysqli_fetch_array($result)) {
                 $id = $row['id'];

@@ -68,10 +68,7 @@
         <tbody>
             <?php
             include("DB/config.php");
-            $sql = "SELECT * FROM clienti_gen
-            INNER JOIN clienti_leg ON clienti_gen.id=clienti_leg.id
-            INNER JOIN clienti_amm ON clienti_gen.id=clienti_amm.id
-            INNER JOIN clienti_cont ON clienti_gen.id=clienti_cont.id ";
+            $sql = "SELECT * FROM clienti";
             $result = mysqli_query($conndb, $sql);
             while($row = mysqli_fetch_array($result)) {
                 $id = $row['id'];

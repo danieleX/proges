@@ -52,27 +52,14 @@ if (mysqli_query($conndb, $sql_art)) {
     echo "C'e' stato un errore creando la tabella articoli: " . mysqli_error($conndb) . '<br/>';
 }
 
-//creo tabella clienti generale
-$sql_cg = "CREATE TABLE clienti_gen (
+//creo tabella clienti
+$sql_c = "CREATE TABLE clienti (
 id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 nomeC VARCHAR(40) NOT NULL,
 cognomeC VARCHAR(20) NULL,
 codC VARCHAR(4) NOT NULL,
 descrC VARCHAR(100) NULL,
 noteC VARCHAR(100) NULL,
-reg_date TIMESTAMP,
-UNIQUE (codC)
-)";
-
-if (mysqli_query($conndb, $sql_cg)) {
-    echo "Tabella generale clienti creata con successo'<br/>'";
-} else {
-    echo "C'e' stato un errore creando la tabella generale clienti: " . mysqli_error($conndb) . '<br/>';
-}
-
-//creo tabella clienti legale
-$sql_cl = "CREATE TABLE clienti_leg (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 indirizzoLC VARCHAR(50) NULL,
 cittaLC VARCHAR(20) NULL,
 capLC INT(5) NULL,
@@ -82,19 +69,6 @@ faxLC VARCHAR(16) NULL,
 statoLC VARCHAR(30) NULL,
 emailLC VARCHAR(40) NULL,
 urlLC VARCHAR(100) NULL,
-reg_date TIMESTAMP,
-UNIQUE (emailLC)
-)";
-
-if (mysqli_query($conndb, $sql_cl)) {
-    echo "Tabella sede legale clienti creata con successo'<br/>'";
-} else {
-    echo "C'e' stato un errore creando la tabella sede legale clienti: " . mysqli_error($conndb) . '<br/>';
-}
-
-//creo tabella clienti amministrazione
-$sql_ca = "CREATE TABLE clienti_amm (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 indirizzoAC VARCHAR(50) NULL,
 cittaAC VARCHAR(20) NULL,
 capAC INT(5) NULL,
@@ -104,30 +78,18 @@ cellAC INT(11) NULL,
 statoAC VARCHAR(30) NULL,
 emailAC VARCHAR(40) NULL,
 urlAC VARCHAR(100) NULL,
-reg_date TIMESTAMP,
-UNIQUE (emailAC)
-)";
-
-if (mysqli_query($conndb, $sql_ca)) {
-    echo "Tabella sede amministrativa clienti creata con successo'<br/>'";
-} else {
-    echo "C'e' stato un errore creando la tabella sede amministrattiva clienti: " . mysqli_error($conndb) . '<br/>';
-}
-
-//creo tabella clienti contabilita'
-$sql_cc = "CREATE TABLE clienti_cont (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 PIVAC INT(11) NULL,
 CFC VARCHAR(16) NULL,
 IBANC VARCHAR(27) NULL,
 bancaC VARCHAR(100) NULL,
-UNIQUE (PIVAC, CFC)
+reg_date TIMESTAMP,
+UNIQUE (codC, emailAC, PIVAC, CFC)
 )";
 
-if (mysqli_query($conndb, $sql_cc)) {
-    echo "Tabella contabilita' clienti creata con successo'<br/>'";
+if (mysqli_query($conndb, $sql_c)) {
+    echo "Tabella clienti creata con successo'<br/>'";
 } else {
-    echo "C'e' stato un errore creando la tabella contabilita' clienti: " . mysqli_error($conndb) . '<br/>';
+    echo "C'e' stato un errore creando la tabella clienti: " . mysqli_error($conndb) . '<br/>';
 }
 
 // Creo tabella Causale
@@ -190,26 +152,13 @@ if (mysqli_query($conndb, $sql_pag)) {
 }
 
 //creo tabella fornitori generale
-$sql_fg = "CREATE TABLE fornitori_gen (
+$sql_f = "CREATE TABLE fornitori (
 id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 nomeF VARCHAR(40) NOT NULL,
 cognomeF VARCHAR(20) NULL,
 codF VARCHAR(4) NOT NULL,
 descrF VARCHAR(100) NULL,
 noteF VARCHAR(100) NULL,
-reg_date TIMESTAMP,
-UNIQUE (codF)
-)";
-
-if (mysqli_query($conndb, $sql_fg)) {
-    echo "Tabella generale fornitori creata con successo'<br/>'";
-} else {
-    echo "C'e' stato un errore creando la tabella generale fornitori: " . mysqli_error($conndb) . '<br/>';
-}
-
-//creo tabella fornitori legale
-$sql_fl = "CREATE TABLE fornitori_leg (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 indirizzoLF VARCHAR(50) NULL,
 cittaLF VARCHAR(20) NULL,
 capLF INT(5) NULL,
@@ -219,30 +168,18 @@ faxLF VARCHAR(16) NULL,
 statoLF VARCHAR(30) NULL,
 emailLF VARCHAR(40) NULL,
 urlLF VARCHAR(100) NULL,
-reg_date TIMESTAMP,
-UNIQUE (emailLF)
-)";
-
-if (mysqli_query($conndb, $sql_fl)) {
-    echo "Tabella sede legale fornitori creata con successo<br/>";
-} else {
-    echo "C'e' stato un errore creando la tabella sede legale fornitori: " . mysqli_error($conndb) . "<br/>";
-}
-
-//creo tabella fornitori contabilita'
-$sql_fc = "CREATE TABLE fornitori_cont (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 PIVAF INT(11) NULL,
 CFF VARCHAR(16) NULL,
 IBANF VARCHAR(27) NULL,
 bancaF VARCHAR(100) NULL,
-UNIQUE (PIVAF, CFF)
+reg_date TIMESTAMP,
+UNIQUE (codF, emailLF, PIVAF, CFF)
 )";
 
-if (mysqli_query($conndb, $sql_fc)) {
-    echo "Tabella contabilita' fornitori creata con successo'<br/>'";
+if (mysqli_query($conndb, $sql_f)) {
+    echo "Tabella fornitori creata con successo'<br/>'";
 } else {
-    echo "C'e' stato un errore creando la tabella contabilita' fornitori: " . mysqli_error($conndb) . '<br/>';
+    echo "C'e' stato un errore creando la tabella fornitori: " . mysqli_error($conndb) . '<br/>';
 }
 
 //creo tabella login
@@ -257,6 +194,58 @@ UNIQUE (userLOG)
 
 if (mysqli_query($conndb, $sql_log)) {
     echo "Tabella login creata con successo";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+}
+
+//creo tabella numerazione fattura
+$sql_nf = "CREATE TABLE numerazione_ftt (
+id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+reg_date TIMESTAMP,
+)";
+
+if (mysqli_query($conndb, $sql_nf)) {
+    echo "Tabella numerazione fattura creata con successo";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+}
+
+//creo tabella numerazione DocumentoDiTrasporto
+$sql_nd = "CREATE TABLE numerazione_ddt (
+id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+reg_date TIMESTAMP,
+)";
+
+if (mysqli_query($conndb, $sql_nd)) {
+    echo "Tabella numerazione DDT creata con successo";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+}
+
+//creo tabella numerazione NotaDiCredito
+$sql_nn = "CREATE TABLE numerazione_ndc (
+id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+reg_date TIMESTAMP,
+)";
+
+if (mysqli_query($conndb, $sql_nn)) {
+    echo "Tabella numerazione NDC creata con successo";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);
+}
+
+//creo tabella numerazione preventivi
+$sql_np = "CREATE TABLE numerazione_p (
+id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+reg_date TIMESTAMP,
+)";
+
+if (mysqli_query($conndb, $sql_np)) {
+    echo "Tabella numerazione preventivi creata con successo";
     header('Refresh: 3; URL = homeDB.php');
 } else {
     echo "C'e' stato un errore creando la tabella: " . mysqli_error($conndb);

@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Credenziali
 include_once("config.php");
 
-// Creo tabella IVA
+// Elimino tabella IVA
 $sql_iva = "DROP TABLE iva";
 
 if (mysqli_query($conndb, $sql_iva)) {
@@ -15,7 +15,7 @@ if (mysqli_query($conndb, $sql_iva)) {
     echo "C'e' stato un errore eliminando la tabella IVA: " . mysqli_error($conndb) . '<br/>';
 }
 
-// Creo tabella Imballo
+// Elimino tabella Imballo
 $sql_imb = "DROP TABLE imballo";
 
 if (mysqli_query($conndb, $sql_imb)) {
@@ -24,7 +24,7 @@ if (mysqli_query($conndb, $sql_imb)) {
     echo "C'e' stato un errore eliminando la tabella imballo: " . mysqli_error($conndb) . '<br/>';
 }
 
-// Creo tabella Articoli
+// Elimino tabella Articoli
 $sql_art = "DROP TABLE articoli";
 
 if (mysqli_query($conndb, $sql_art)) {
@@ -33,43 +33,16 @@ if (mysqli_query($conndb, $sql_art)) {
     echo "C'e' stato un errore eliminando la tabella articoli: " . mysqli_error($conndb) . '<br/>';
 }
 
-//creo tabella clienti generale
-$sql_cg = "DROP TABLE clienti_gen";
+//Elimino tabella clienti generale
+$sql_c = "DROP TABLE clienti";
 
-if (mysqli_query($conndb, $sql_cg)) {
-    echo "Tabella generale clienti eliminata con successo'<br/>'";
+if (mysqli_query($conndb, $sql_c)) {
+    echo "Tabella clienti eliminata con successo'<br/>'";
 } else {
-    echo "C'e' stato un errore eliminando la tabella generale clienti: " . mysqli_error($conndb) . '<br/>';
+    echo "C'e' stato un errore eliminando la tabella clienti: " . mysqli_error($conndb) . '<br/>';
 }
 
-//creo tabella clienti legale
-$sql_cl = "DROP TABLE clienti_leg";
-
-if (mysqli_query($conndb, $sql_cl)) {
-    echo "Tabella sede legale clienti eliminata con successo'<br/>'";
-} else {
-    echo "C'e' stato un errore eliminando la tabella sede legale clienti: " . mysqli_error($conndb) . '<br/>';
-}
-
-//creo tabella clienti amministrazione
-$sql_ca = "DROP TABLE clienti_amm";
-
-if (mysqli_query($conndb, $sql_ca)) {
-    echo "Tabella sede amministrativa clienti eliminata con successo'<br/>'";
-} else {
-    echo "C'e' stato un errore eliminando la tabella sede amministrattiva clienti: " . mysqli_error($conndb) . '<br/>';
-}
-
-//creo tabella clienti contabilita'
-$sql_cc = "DROP TABLE clienti_cont";
-
-if (mysqli_query($conndb, $sql_cc)) {
-    echo "Tabella contabilita' clienti eliminata con successo'<br/>'";
-} else {
-    echo "C'e' stato un errore eliminando la tabella contabilita' clienti: " . mysqli_error($conndb) . '<br/>';
-}
-
-// Creo tabella Causale
+// Elimino tabella Causale
 $sql_cau = "DROP TABLE causale";
 
 if (mysqli_query($conndb, $sql_cau)) {
@@ -78,7 +51,7 @@ if (mysqli_query($conndb, $sql_cau)) {
     echo "C'e' stato un errore eliminando la tabella Causale: " . mysqli_error($conndb) . '<br/>';
 }
 
-// Creo tabella Mezzo
+// Elimino tabella Mezzo
 $sql_mezzo = "DROP TABLE mezzo";
 
 if (mysqli_query($conndb, $sql_mezzo)) {
@@ -87,7 +60,7 @@ if (mysqli_query($conndb, $sql_mezzo)) {
     echo "C'e' stato un errore eliminando la tabella mezzo: " . mysqli_error($conndb) . '<br/>';
 }
 
-// Creo tabella Spese Aggiuntive
+// Elimino tabella Spese Aggiuntive
 $sql_sag = "DROP TABLE sp_agg";
 
 if (mysqli_query($conndb, $sql_sag)) {
@@ -96,7 +69,7 @@ if (mysqli_query($conndb, $sql_sag)) {
     echo "C'e' stato un errore eliminando la tabella Spese Aggiunte: " . mysqli_error($conndb) . '<br/>';
 }
 
-// Creo tabella Pagamento
+// Elimino tabella Pagamento
 $sql_pag = "DROP TABLE pagam";
 
 if (mysqli_query($conndb, $sql_pag)) {
@@ -105,42 +78,65 @@ if (mysqli_query($conndb, $sql_pag)) {
     echo "C'e' stato un errore eliminando la tabella Pagamento: " . mysqli_error($conndb) . '<br/>';
 }
 
-//creo tabella fornitori generale
-$sql_fg = "DROP TABLE fornitori_gen";
+//Elimino tabella fornitori generale
+$sql_fg = "DROP TABLE fornitori";
 
 if (mysqli_query($conndb, $sql_fg)) {
-    echo "Tabella generale fornitori eliminata con successo'<br/>'";
+    echo "Tabella fornitori eliminata con successo'<br/>'";
 } else {
-    echo "C'e' stato un errore eliminando la tabella generale fornitori: " . mysqli_error($conndb) . '<br/>';
+    echo "C'e' stato un errore eliminando la tabella fornitori: " . mysqli_error($conndb) . '<br/>';
 }
 
-//creo tabella fornitori legale
-$sql_fl = "DROP TABLE fornitori_leg";
-
-if (mysqli_query($conndb, $sql_fl)) {
-    echo "Tabella sede legale fornitori eliminata con successo<br/>";
-} else {
-    echo "C'e' stato un errore eliminando la tabella sede legale fornitori: " . mysqli_error($conndb) . "<br/>";
-}
-
-//creo tabella fornitori contabilita'
-$sql_fc = "DROP TABLE fornitori_cont";
-
-if (mysqli_query($conndb, $sql_fc)) {
-    echo "Tabella contabilita' fornitori eliminata con successo'<br/>'";
-} else {
-    echo "C'e' stato un errore eliminando la tabella contabilita' fornitori: " . mysqli_error($conndb) . '<br/>';
-}
-
-//creo tabella login
+//Elimino tabella login
 $sql_log = "DROP TABLE login";
 
 if (mysqli_query($conndb, $sql_log)) {
     echo "Tabella login eliminata con successo";
     header('Refresh: 3; URL = homeDB.php');
 } else {
-    echo "C'e' stato un errore eliminando la tabella: " . mysqli_error($conndb);
+    echo "C'e' stato un errore eliminando la tabella login: " . mysqli_error($conndb);
 }
+
+//elimino tabella numerazione fattura
+$sql_nf = "DROP TABLE numerazione_ftt";
+
+if (mysqli_query($conndb, $sql_nf)) {
+    echo "Tabella numerazione fattura eliminata con successo";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore eliminando la tabella numerazione fattura: " . mysqli_error($conndb);
+}
+
+//elimino tabella numerazione DocumentoDiTrasporto
+$sql_nd = "DROP TABLE numerazione_ddt";
+
+if (mysqli_query($conndb, $sql_nd)) {
+    echo "Tabella numerazione DDT eliminata con successo";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore eliminando la tabella numerazione DDT: " . mysqli_error($conndb);
+}
+
+//elimino tabella numerazione NotaDiCredito
+$sql_nn = "DROP TABLE numerazione_ndc";
+
+if (mysqli_query($conndb, $sql_nn)) {
+    echo "Tabella numerazione NDC eliminata con successo";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella numerazione NDC: " . mysqli_error($conndb);
+}
+
+//elimino tabella numerazione preventivi
+$sql_np = "DROP TABLE numerazione_p";
+
+if (mysqli_query($conndb, $sql_np)) {
+    echo "Tabella numerazione preventivi eliminata con successo";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella numerazione preventivi: " . mysqli_error($conndb);
+}
+
         }
     if ($_POST['confirm'] == 'No') {
     echo "Ottima scelta. Le tabelle sono salve. Attendi 5 secondi <br><br>";

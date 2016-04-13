@@ -25,59 +25,22 @@
         $bancaF = mysqli_real_escape_string($conndb,$_POST['bancaF']);
 
       //inserisci dati in tabella clienti generale
-$sql_gen = "INSERT INTO fornitori_gen (nomeF, cognomeF, codF, descrF, noteF) VALUES ('$nomeF', '$cognomeF', '$codF', '$descrF', '$noteF')";
+$sql_gen = "INSERT INTO fornitori_gen (nomeF, cognomeF, codF, descrF, noteF, indirizzoLF, cittaLF, capLF, provLF, telLF, faxLF, statoLF, emailLF, urlLF, PIVAF, CFF, IBANF, bancaF) VALUES ('$nomeF', '$cognomeF', '$codF', '$descrF', '$noteF', '$indirizzoLF', '$cittaLF', '$capLF', '$provLF', '$telLF', '$faxLF', '$statoLF', '$emailLF', '$urlLF', '$PIVAF', '$CFF', '$IBANF', '$bancaF')";
 
 //controllo inserimento
 if ($conndb->query($sql_gen) === TRUE) {
-    $ok_gen = "
+    $ok = "
           <div class=\"alert alert-success alert-dismissable\">
           Inserimento dati generali effettuato con <strong>successo.</strong>
           </div>
           ";
 } else {
-    $no_gen = "
+    $no = "
          <div class=\"alert alert-danger alert-dismissable\">
          Errore durante l'inserimento dati generali: $conndb->error;
          </div>
          ";
 }
-
-//inserisci dati in tabella clienti legale
-$sql_leg = "INSERT INTO fornitori_leg (indirizzoLF, cittaLF, capLF, provLF, telLF, faxLF, statoLF, emailLF, urlLF) VALUES ('$indirizzoLF', '$cittaLF', '$capLF', '$provLF', '$telLF', '$faxLF', '$statoLF', '$emailLF', '$urlLF')";
-
-//controllo inserimento
-if ($conndb->query($sql_leg) === TRUE) {
-    $ok_leg = "
-          <div class=\"alert alert-success alert-dismissable\">
-          Inserimento dati legali effettuato con <strong>successo.</strong>
-          </div>
-          ";
-} else {
-    $no_leg = "
-         <div class=\"alert alert-danger alert-dismissable\">
-         Errore durante l'inserimento dati sede legale: $conndb->error;
-         </div>
-         ";
-}
-
-//inserisci dati in tabella clienti contabilità
-$sql_cont = "INSERT INTO fornitori_cont (PIVAF, CFF, IBANF, bancaF) VALUES ('$PIVAF', '$CFF', '$IBANF', '$bancaF')";
-
-//controllo inserimento
-if ($conndb->query($sql_cont) === TRUE) {
-    $ok_cont = "
-          <div class=\"alert alert-success alert-dismissable\">
-          Inserimento dati contabilita' effettuato con <strong>successo.</strong>
-          </div>
-          ";
-} else {
-    $no_cont = "
-         <div class=\"alert alert-danger alert-dismissable\">
-         Errore durante l'inserimento dati contabilita': $conndb->error;
-         </div>
-         ";
-}
-   }
 
 ?>
 
@@ -96,9 +59,6 @@ if ($conndb->query($sql_cont) === TRUE) {
     <?php include_once("session.php"); ?>
 
     <style>
-        /*
-        * Ma gli stili li lasciamo qua? Ma per ora si. non ce ne saranno molti tanto. poi li raggruppiamo e facciamo file dedicato
-        */
 
         .login_ {
             margin: auto;
@@ -131,7 +91,7 @@ if ($conndb->query($sql_cont) === TRUE) {
         <?php include_once("./../template/parrot/navbar.php") ?>
 
     <div class="container">
-                <small><?php echo $ok_gen; echo $no_gen; echo $ok_leg; echo $no_leg; echo $ok_cont; echo $no_cont; ?></small>
+                <small><?php echo $ok; echo $no; ?></small>
     </div>
 
         <div class="componant-section">
