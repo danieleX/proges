@@ -48,60 +48,17 @@
                 <th>+ info</th>
             </tr>
         </thead>
-        <tbody>
-            <?php
-            include("DB/config.php");
-            $sql = "SELECT * FROM clienti";
-            $result = mysqli_query($conndb, $sql);
-            while($row = mysqli_fetch_array($result)) {
-                $id = $row['id'];
-                $nomeC = $row['nomeC'];
-                $cognomeC = $row['cognomeC'];
-                $codC = $row['codC'];
-                $descrC = $row['descrC'];
-                $noteC = $row['noteC'];
-                $indirizzoLC = $row['indirizzoLC'];
-                $cittaLC = $row['cittaLC'];
-                $capLC = $row['capLC'];
-                $provLC = $row['provLC'];
-                $telLC = $row['telLC'];
-                $faxLC = $row['faxLC'];
-                $statoLC = $row['statoLC'];
-                $emailLC = $row['emailLC'];
-                $urlLC = $row['urlLC'];
-                $indirizzoAC = $row['indirizzoAC'];
-                $cittaAC = $row['cittaAC'];
-                $capAC = $row['capAC'];
-                $provAC = $row['provAC'];
-                $telAC = $row['telAC'];
-                $cellAC = $row['cellAC'];
-                $statoAC = $row['statoAC'];
-                $emailAC = $row['emailAC'];
-                $urlAC = $row['urlAC'];
-                $PIVAC = $row['PIVAC'];
-                $CFC = $row['CFC'];
-                $IBANC = $row['IBANC'];
-                $bancaC = $row['bancaC'];
-                echo "<tr>
-                <td>".$id."</td>
-                <td>".$nomeC."</td>
-                <td>".$cognomeC."</td>
-                <td>".$codC."</td>
-                <td>".$descrC."</td>
-                <td>".$noteC."</td>
-                <td>".$telLC."</td>
-                <td>".$cellAC."</td>
-                <td>".$PIVAC."</td>
-                <td>".$CFC."</td>
-                <td>
-                    <input class=\"form-control\" type=\"button\" value=\"Dettagli\" onClick=\"clientModal('".$nomeC."','".$cognomeC."','".$codC."','".$descrC."','".$noteC."','".$indirizzoLC."','".$cittaLC."','".$capLC."','".$provLC."','".$telLC."','".$faxLC."','".$statoLC."','".$emailLC."','".$urlLC."','".$indirizzoAC."','".$cittaAC."','".$capAC."','".$provAC."','".$telAC."','".$cellAC."','".$statoAC."','".$emailAC."','".$urlAC."','".$PIVAC."','".$CFC."','".$IBANC."','".$bancaC."')\" old-onClick=\"window.alert('ID:                            $id\\nNome:                      $nomeC\\nCognome:                $cognomeC\\nCodice:                     $codC\\nDescrizione:             $descrC\\nNote:                       $noteC\\nIndirizzo legale:       $indirizzoLC\\nCitta legale:             $cittaLC\\nCAP legale:              $capLC\\nProv legale:              $provLC\\nTelefono legale:       $telLC\\nFax legale:                $faxLC\\nStato legale:             $statoLC\\ne-mail legale:           $emailLC\\nURL legale:               $urlLC\\nIndirizzo:                  $indirizzoAC\\nCitta:                        $cittaAC\\nCAP:                         $capAC\\nProvincia:                 $provAC\\nTelefono:                  $telAC\\nCellulare:                 $cellAC\\nStato:                       $statoAC\\nemail:                       $emailAC\\nURL:                         $urlAC\\nP.IVA:                       $PIVAC\\nCod.Fisc.:                 $CFC\\nIBAN:                       $IBANC\\nBanca:                     $bancaC')\">
-                </td>
-                </tr>";
-            }
-            mysqli_close($conndb);
-            ?>
+        <tbody id="records">
         </tbody>
     </table>
+    <div class="row">
+    <nav class="col-sm-12">
+      <ul class="pager">
+        <li class="previous"><a id="prec" href="#"><span aria-hidden="true">&larr;</span> Precedente</a></li>
+        <li class="next"><a id="succ" href="#">Successivo <span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+    </nav>
+</div>
     </div>
 
     <div class="modal fade" id="clientModal" tabindex="-1" role="dialog">
@@ -148,13 +105,147 @@
 </table>
 </div>
 </div>
-
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
       </div>
     </div>
   </div>
 </div>
-    <?php include_once("template/parrot/foot.php") ?>
-	</body>
+<?php include_once("template/parrot/foot.php") ?>
+<script type="text/javascript">
+var records,
+    page = 0,
+    limit = 30;
+function loadPage(page, limit){
+    $.ajax({
+        url: "function/get_listaclienti.php",
+        dataType: "JSON",
+        type: "GET",
+        error: function(){
+            alert("Chiamata fallita!!!");
+          },
+        data: "page="+page+"&limit="+limit,
+        success: function(result){
+        records = result;
+        loadQuery();
+        page = limit + page;
+        limit = limit * 2;
+        }
+    });
+};
+
+
+</script>
+            <script type="text/javascript">
+
+            function loadQuery() {
+                var tab = document.getElementById('records'),
+                    newTr,
+                    info,
+                    td;
+                var x = document.getElementById("prec").parentNode;
+                    if (page < 0 || page == 0) {
+                        x.className = "previous disabled";
+                    }
+                    else {
+                        x.className = "previous";
+                    }
+                document.getElementById("records").innerHTML = "";
+                for (var id in records ) {
+                    var texts = new Array( //inizializza i dati che ti servono
+                        records[id].id,
+                        records[id].nomeC,
+                        records[id].cognomeC,
+                        records[id].codC,
+                        records[id].descrC,
+                        records[id].noteC,
+                        records[id].telLC,
+                        records[id].cellAC,
+                        records[id].PIVAC,
+                        records[id].CFC
+                        );
+
+                    newTds = generateTd(texts);
+                    for ( var td in newTds) {
+                        newTr.appendChild(newTds[td]);
+                    }
+
+                    info = document.createElement("input");
+                    info.className = "form-control";
+                    info.type = "button";
+                    info.id = records[id].id;
+                    info.value ="Dettagli";
+                    info.onclick = function(num) {
+                        var num = this.getAttribute("id") - 1;
+                        console.log(num);
+                        clientModal([
+                                records[num].nomeC,
+                                records[num].cognomeC,
+                                records[num].codC,
+                                records[num].descrC,
+                                records[num].noteC,
+                                records[num].indirizzoLC,
+                                records[num].cittaLC,
+                                records[num].capLC,
+                                records[num].provLC,
+                                records[num].telLC,
+                                records[num].faxLC,
+                                records[num].statoLC,
+                                records[num].emailLC,
+                                records[num].urlLC,
+                                records[num].indirizzoAC,
+                                records[num].cittaAC,
+                                records[num].capAC,
+                                records[num].provAC,
+                                records[num].telAC,
+                                records[num].cellAC,
+                                records[num].statoAC,
+                                records[num].emailAC,
+                                records[num].urlAC,
+                                records[num].PIVAC,
+                                records[num].CFC,
+                                records[num].IBANC,
+                                records[num].bancaC
+                                ]
+                        )};
+                    td = document.createElement("td");
+                    td.appendChild(info);
+                    newTr.appendChild(td);
+                    document.getElementById('records').appendChild(newTr);
+
+                }
+                function generateTd(arr) {
+                    var newTd,
+                        text;
+                        obj = new Array();
+                    newTr = document.createElement("tr");
+                    newTr.id = "row-" + records[id].id;
+                    for (key in arr) {
+                        newTd = document.createElement("td");
+                        text = document.createTextNode(arr[key]);
+                        newTd.appendChild(text);
+                        obj.push(newTd);
+                }
+                    return obj;
+                }
+            }
+
+            $("#succ").click(function() {
+                page += +30;
+                limit += +30;
+                loadPage(page, limit)
+            });
+
+            $("#prec").click(function() {
+                if (page !=0 ) {
+                    page += -30;
+                    limit += -30;
+                    loadPage(page, limit)
+                }
+            });
+
+            loadPage(0, 30);
+
+            </script>
+</body>
 </html>

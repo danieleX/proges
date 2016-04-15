@@ -1,9 +1,11 @@
 <?php
-   session_start();
+	//header('Content-Type: text/plain');
+	session_start();
 
-   $user = $_SESSION['login_user'];
+	$user = $_SESSION['login_user'];
 
-   if(!isset($_SESSION['login_user'])){
-      header("location:function/login.php");
+	if(!isset($_SESSION['login_user'])){
+  		header("location:function/login.php");
+
    }
 ?>
