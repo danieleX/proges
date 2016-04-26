@@ -9,16 +9,19 @@ $result = $conndb->query($sql_clienti);
 
 $newKey = array();
 $key = 0;
+
 while ( $row = mysqli_fetch_assoc($result) ) {
     $nomeCliente = $row["nomeC"];
     $cognomeCliente = $row["cognomeC"];
     $CFCliente = $row["CFC"];
     $newKey[] .= $key;
-    array_push($newKey, array(["nomeC" => $nomeCliente,
-"cognomeC" => $cognomeCliente,
-"CodFiscC" => $CFCliente]));
-
-
+    array_push($newKey, array(
+        [
+        "count" => $key,
+        "nomeC" => $nomeCliente,
+        "cognomeC" => $cognomeCliente,
+        "CodFiscC" => $CFCliente
+        ]));
 
     $key++;
 }
