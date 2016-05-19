@@ -11,6 +11,8 @@
 
       $sql = "SELECT id FROM login WHERE tipoLOG = '$tipoFORM' AND userLOG = '$userFORM' AND pswdLOG = '$pswdFORM'";
       $ris = mysqli_query($conndb,$sql);
+       $row = mysqli_fetch_assoc($ris);
+
       $rec = mysqli_fetch_array($ris,MYSQLI_ASSOC);
       $active = @$rec['active'];
 
@@ -18,7 +20,8 @@
 
       // se l'utente esiste, $count deve essere uguale a 1
       if($count == 1) {
-         $_SESSION['login_user'] = $userFORM;
+        $_SESSION['login_user'] = $userFORM;
+        $_SESSION['id_user'] = $row["id"];
          header('Refresh: 3; URL= ../home.php');
           $ok = "
           <div class=\"alert alert-success alert-dismissable\">

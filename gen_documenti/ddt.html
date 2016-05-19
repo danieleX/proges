@@ -38,10 +38,16 @@
                 display: none;
             }
         }
+        .typo {
+            font-family: monospace, monospace;
+            padding-left: 5px;
+            font-size: 14px;
+        }
 
     </style>
 </head>
 <body>
+<div id="stampa" style="padding-top: 10px; padding-bottom: 10px;" class="container-fluid text-center"><span class="h1"><a href="#" onclick="window.print()"><span class="glyphicon glyphicon-print"></span> Stampa</a></span></div>
     <page>
         <div style="background: #FFF" class="container-fluid">
             <div class="table-responsive">
@@ -65,29 +71,30 @@
                 </thead>
                 <tbody>
                         <tr>
-                            <td colspan="3"><p class="col-md-3">Destinatario</p><p class="col-md-9"></p></td>
+                            <td colspan="3"><p class="col-md-12">Destinatario <span class="typo">Danielo</span> </p></td>
                         </tr>
 
                         <tr>
-                            <td colspan="3"><p class="col-md-3">Domicilio o residenza</p><p class="col-md-9"></p></td>
+                            <td colspan="3"><p class="col-md-12">Domicilio o residenza <span class="typo">Danielo</span></p></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><p class="col-md-3">Causale del trasporto</p><p class="col-md-9"></p></td>
+                            <td colspan="3"><p class="col-md-12">Causale del trasporto <span class="typo">Danielo</span></p></td>
                         </tr>
                         <tr>
-                            <td><p class="col-md-3">Aspetto esteriore dei beni</p><p class="col-md-9"></p></td>
-                            <td><p class="col-md-3">N. Colli</p><p class="col-md-9"></p></td>
-                            <td><p class="col-md-3">Peso Kg.</p><p class="col-md-9"></p></td>
+                            <td><p class="col-md-12">Aspetto esteriore dei beni</p></td>
+                            <td><p class="col-md-12">N. Colli <span class="typo">Danielo</span></td>
+                            <td><p class="col-md-12">Peso Kg. <span class="typo">Danielo</span></td>
 
                         </tr>
                         <tr>
                             <td><p class="col-md-3">Consegna o inizio trasporto a mezzo mittente o destinatario</p></td>
                             <td><p class="col-md-3">Data e ora</p><p class="col-md-9"></p><td><p class="col-md-3">Firma del Conducente</p><p class="col-md-9"></td>
                         </tr>
-                        <tr><td ><p class="col-md-12">QUANTITA'</p></td><td colspan="2"><p class="col-md-12">DESCRIZIONE DEI BENI</p></td></tr>
+                        <tr>
+                            <td colspan="2"><p class="col-md-12">Descrizione dei beni</p></td><td><p class="col-md-12">Q.tà'</p></td></tr>
                         <tr class="qnt" height="400">
-                            <td></td>
                             <td colspan="2"></td>
+                            <td></td>
 
                         </tr>
                         <tr>

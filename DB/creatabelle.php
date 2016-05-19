@@ -201,7 +201,10 @@ if (mysqli_query($conndb, $sql_log)) {
 
 //creo tabella numerazione fattura
 $sql_nf = "CREATE TABLE numerazione_ftt (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+num INT(5) NOT NULL,
+dest VARCHAR(50) NOT NULL,
+link VARCHAR(250) NULL,
 reg_date TIMESTAMP
 )";
 
@@ -212,9 +215,33 @@ if (mysqli_query($conndb, $sql_nf)) {
     echo "C'e' stato un errore creando la tabella numerazione fattura: " . mysqli_error($conndb) . '<br/>';
 }
 
+//creo tabella fattura
+$sql_fatt = "CREATE TABLE fatt (
+id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id_doc INT(5) NOT NULL,
+id_art INT(5) NOT NULL,
+qta INT(5) NOT NULL,
+id_iva INT(3) NOT NULL,
+id_mezzo INT(3) NULL,
+id_caus INT(3) NULL,
+id_imb INT(3) NULL,
+note VARCHAR(100) NULL,
+reg_date TIMESTAMP
+)";
+
+if (mysqli_query($conndb, $sql_fatt)) {
+    echo "Tabella fatture creata con successo'<br/>'";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella fatture: " . mysqli_error($conndb) . '<br/>';
+}
+
 //creo tabella numerazione DocumentoDiTrasporto
 $sql_nd = "CREATE TABLE numerazione_ddt (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+num INT(5) NOT NULL,
+dest VARCHAR(50) NOT NULL,
+link VARCHAR(250) NULL,
 reg_date TIMESTAMP
 )";
 
@@ -225,9 +252,32 @@ if (mysqli_query($conndb, $sql_nd)) {
     echo "C'e' stato un errore creando la tabella numerazione DDT: " . mysqli_error($conndb) . '<br/>';
 }
 
+//creo tabella ddt
+$sql_ddt = "CREATE TABLE ddt (
+id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id_doc INT(5) NOT NULL,
+id_art INT(5) NOT NULL,
+qta INT(5) NOT NULL,
+id_mezzo INT(3) NULL,
+id_caus INT(3) NULL,
+id_imb INT(3) NULL,
+note VARCHAR(100) NULL,
+reg_date TIMESTAMP
+)";
+
+if (mysqli_query($conndb, $sql_ddt)) {
+    echo "Tabella DdT creata con successo'<br/>'";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella DdT: " . mysqli_error($conndb) . '<br/>';
+}
+
 //creo tabella numerazione NotaDiCredito
 $sql_nn = "CREATE TABLE numerazione_ndc (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+num INT(5) NOT NULL,
+dest VARCHAR(50) NOT NULL,
+link VARCHAR(250) NULL,
 reg_date TIMESTAMP
 )";
 
@@ -238,9 +288,33 @@ if (mysqli_query($conndb, $sql_nn)) {
     echo "C'e' stato un errore creando la tabella numerazione NDC: " . mysqli_error($conndb) . '<br/>';
 }
 
+//creo tabella ndc
+$sql_ndc = "CREATE TABLE ndc (
+id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id_doc INT(5) NOT NULL,
+id_art INT(5) NOT NULL,
+qta INT(5) NOT NULL,
+id_iva INT(3) NOT NULL,
+id_mezzo INT(3) NULL,
+id_caus INT(3) NULL,
+id_imb INT(3) NULL,
+note VARCHAR(100) NULL,
+reg_date TIMESTAMP
+)";
+
+if (mysqli_query($conndb, $sql_ndc)) {
+    echo "Tabella NdC creata con successo'<br/>'";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella NdC: " . mysqli_error($conndb) . '<br/>';
+}
+
 //creo tabella numerazione preventivi
 $sql_np = "CREATE TABLE numerazione_p (
-id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+num INT(5) NOT NULL,
+dest VARCHAR(50) NOT NULL,
+link VARCHAR(250) NULL,
 reg_date TIMESTAMP
 )";
 
@@ -251,5 +325,48 @@ if (mysqli_query($conndb, $sql_np)) {
     echo "C'e' stato un errore creando la tabella numerazione preventivi: " . mysqli_error($conndb) . '<br/>';
 }
 
+//creo tabella preventivi
+$sql_prev = "CREATE TABLE prev (
+id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id_doc INT(5) NOT NULL,
+id_art INT(5) NOT NULL,
+qta INT(5) NOT NULL,
+id_iva INT(3) NOT NULL,
+id_mezzo INT(3) NULL,
+id_caus INT(3) NULL,
+id_imb INT(3) NULL,
+note VARCHAR(100) NULL,
+reg_date TIMESTAMP
+)";
+
+if (mysqli_query($conndb, $sql_prev)) {
+    echo "Tabella preventivi creata con successo'<br/>'";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella preventivi: " . mysqli_error($conndb) . '<br/>';
+}
+
 mysqli_close($conndb);
+
+//creo tabella custom settings
+$sql_custom_settings = "CREATE TABLE `custom_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `max_fatt` int(11) NOT NULL DEFAULT '30',
+  `max_ndc` int(11) NOT NULL DEFAULT '30',
+  `max_ddt` int(11) NOT NULL DEFAULT '30',
+  `max_prev` int(11) NOT NULL DEFAULT '30',
+  `max_listini` int(11) NOT NULL DEFAULT '30',
+  `max_clienti` int(11) NOT NULL DEFAULT '30',
+  `max_fornitori` int(11) NOT NULL DEFAULT '30',
+  `id_user` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+)";
+
+if (mysqli_query($conndb, $sql_prev)) {
+    echo "Tabella preventivi creata con successo'<br/>'";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella preventivi: " . mysqli_error($conndb) . '<br/>';
+}
+
 ?>

@@ -46,7 +46,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right navbar-icons">
-                    <li><a><span class="fa-user fa"></span>
+                    <li><a href="http://<?php echo $base_url ?>/settings.php"><span class="fa-user fa"></span>
                         <span class="hidden-lg"><?php echo $user; ?></span></a></li>
                     <li><a href="http://<?php echo $base_url ?>/function/logout.php">
                         <span class="fa-cog fa"></span>
