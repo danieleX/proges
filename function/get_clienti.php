@@ -4,7 +4,7 @@ include("../DB/config.php");
 if (isset($_GET["check"])) $check = mysqli_real_escape_string($conndb,$_GET["check"]);
 else $check = "Nessuna query";
 
-$sql_clienti = "SELECT id, nomeC, cognomeC, CFC FROM clienti WHERE nomeC LIKE \"%".$check."%\" OR cognomeC LIKE \"%".$check."%\" OR CFC LIKE \"%".$check."%\"";
+$sql_clienti = "SELECT id, nomeC, cognomeC, CFC FROM clienti WHERE id LIKE \"%".$check."%\" OR nomeC LIKE \"%".$check."%\" OR cognomeC LIKE \"%".$check."%\" OR CFC LIKE \"%".$check."%\"";
 
 //echo $sql_clienti;
 $result = $conndb->query($sql_clienti);
