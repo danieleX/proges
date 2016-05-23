@@ -1,3 +1,31 @@
+<?php
+include_once("session.php");
+include_once("../DB/config.php");
+
+$query = "SELECT num
+                FROM numerazione_ftt";
+
+/* check connection */
+if ($result = $conndb->query($query)) {
+    if ($debug === true) printf("<!-- Select returned %d rows.\n -->", $result->num_rows);
+    $oggetto_prev = 1;
+    if ($result->num_rows === 0) {
+        $numerazione_fatt = 1;
+    }
+    if ($result->num_rows > 0) {
+        $last_row = $result->fetch_object();
+        $numerazione_fatt = $last_row->num + 1;
+    }
+
+
+}
+if ($conndb->connect_errno) {
+    printf("Connect failed: %s\n", $conndb->connect_error);
+    $numerazione_fatt = "Errore";
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="it">
@@ -15,7 +43,6 @@
     <script src="js/html5shiv.js"></script>
     <![endif]-->
 
-    <?php include_once("session.php"); ?>
     <style>
         .autocomplete-suggestions {color: #000000}
         .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
@@ -40,16 +67,18 @@
 </div>
 
 <div class="container">
+    <div class="row">
     <form class="form-horizontal" method="post" action="#">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">ID cliente</label>
-            <div class="col-sm-10">
+        <input type="hidden" value="<?php echo $numerazione_fatt ?>">
+        <div class="form-group col-sm-3">
+            <label class="col-sm-12 control-label">ID cliente</label>
+            <div class="col-sm-12">
                 <input id="idCliente" type="number" name="idcliente" class="idCliente form-control">
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Nome e cognome</label>
-            <div class="col-sm-10">
+        <div class="form-group col-sm-9">
+            <label class="col-sm-12 control-label">Nome e cognome</label>
+            <div class="col-sm-12">
                 <input id="nomeCognome" type="text" class="idCliente form-control">
             </div>
         </div>
@@ -59,6 +88,7 @@
             </div>
         </div>
     </form>
+        </div>
 </div>
 
 <?php include_once("../template/parrot/foot.php") ?>
