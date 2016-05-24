@@ -100,43 +100,85 @@ if ($conndb->connect_errno) {
         <div class="form-group">
             <label class="col-sm-2 control-label">Lista fatture</label>
             <div class="col-sm-10">
-                <input type="number" name="fatt" class="form-control" placeholder="30" value="<?php echo @$row->max_fatt ?>">
+                <select name="fatt" class="form-control" value="<?php echo @$row->max_fatt ?>">
+                    <option value="10">10</option>
+                    <option value="20" selected="selected">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Lista NDC</label>
             <div class="col-sm-10">
-                <input type="number" name="ndc" class="form-control" placeholder="30" value="<?php echo @$row->max_ndc ?>">
+                <select name="ndc" class="form-control" value="<?php echo @$row->max_ndc ?>">
+                    <option value="10">10</option>
+                    <option value="20" selected="selected">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Lista DDT</label>
             <div class="col-sm-10">
-                <input type="number" name="ddt" class="form-control" placeholder="30" value="<?php echo @$row->max_ddt ?>">
+                <select name="ddt" class="form-control" value="<?php echo @$row->max_ddt ?>">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30" selected="selected">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Lista preventivi</label>
             <div class="col-sm-10">
-                <input type="number" name="prev" class="form-control" placeholder="30" value="<?php echo @$row->max_prev ?>">
+                <select name="prev" class="form-control" value="<?php echo @$row->max_prev ?>">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30" selected="selected">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Lista listini</label>
             <div class="col-sm-10">
-                <input type="number" name="listini" class="form-control" placeholder="30" value="<?php echo @$row->max_listini ?>">
+                <select name="listini" class="form-control" value="<?php echo @$row->max_listini ?>">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50" selected="selected">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Lista clienti</label>
             <div class="col-sm-10">
-                <input type="number" name="clienti" class="form-control" placeholder="30" value="<?php echo @$row->max_clienti ?>">
+                <select name="clienti" class="form-control" value="<?php echo @$row->max_clienti ?>">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30" selected="selected">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Lista fornitori</label>
             <div class="col-sm-10">
-                <input type="number" name="fornitori" class="form-control" placeholder="30" value="<?php echo @$row->max_fornitori ?>">
+                <select name="fornitori" class="form-control" value="<?php echo @$row->max_fornitori ?>">
+                    <option value="10">10</option>
+                    <option value="20" selected="selected">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
                 <input type="hidden" name="config" value="<?php echo $config ?>">
             </div>
         </div>
@@ -148,7 +190,7 @@ if ($conndb->connect_errno) {
     </form>
     <div class="alert alert-info" role="alert">
         <span><b>Nota bene:</b><br>
-        Impostare un numero molto grande potrebbe incidere negativamente sulle prestazioni del server</span>
+        Impostare un numero alto potrebbe incidere negativamente sulle prestazioni del server</span>
     </div>
 </div>
 
