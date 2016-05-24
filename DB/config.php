@@ -1,5 +1,9 @@
 <?php
 
+$debug = true;
+$oldLocale = setlocale(LC_TIME, 'it_IT');
+setlocale(LC_TIME, $oldLocale);
+
 // Credenziali
 include_once("data.php");
 

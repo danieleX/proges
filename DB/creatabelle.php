@@ -347,4 +347,26 @@ if (mysqli_query($conndb, $sql_prev)) {
 }
 
 mysqli_close($conndb);
+
+//creo tabella custom settings
+$sql_custom_settings = "CREATE TABLE `custom_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `max_fatt` int(11) NOT NULL DEFAULT '30',
+  `max_ndc` int(11) NOT NULL DEFAULT '30',
+  `max_ddt` int(11) NOT NULL DEFAULT '30',
+  `max_prev` int(11) NOT NULL DEFAULT '30',
+  `max_listini` int(11) NOT NULL DEFAULT '30',
+  `max_clienti` int(11) NOT NULL DEFAULT '30',
+  `max_fornitori` int(11) NOT NULL DEFAULT '30',
+  `id_user` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+)";
+
+if (mysqli_query($conndb, $sql_prev)) {
+    echo "Tabella preventivi creata con successo'<br/>'";
+    header('Refresh: 3; URL = homeDB.php');
+} else {
+    echo "C'e' stato un errore creando la tabella preventivi: " . mysqli_error($conndb) . '<br/>';
+}
+
 ?>

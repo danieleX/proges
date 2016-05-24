@@ -1,6 +1,5 @@
 <?php
    include("../DB/config.php");
-   session_start();
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -83,6 +82,7 @@ if ($conndb->query($sql_gen) === TRUE) {
         h3, h4 {
             color: #EA640C;
         }
+
     </style>
 
 </head>
