@@ -1,0 +1,29 @@
+{
+  "name": "Carta Intestata",
+  "authors": [
+    "Daniele Irsuti"
+  ],
+  "description": "Carta intestata per Gestionale Provenzano",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "gestionale",
+    "provenzano",
+    "gestionale"
+  ],
+  "license": "MIT",
+  "homepage": "http://danieleirsuti.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "font-awesome": "fontawesome#^4.6.3"
+  }
+}
