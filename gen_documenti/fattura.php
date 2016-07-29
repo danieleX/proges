@@ -48,199 +48,8 @@ if ((isset($post)) == true) {
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="default.css">
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <style>
-
-        body {
-            padding-bottom: 60px;
-        }
-
-        .borderless td {
-            border-top: none !important;
-            border-bottom: none !important;
-            height: auto;
-            padding-bottom: 0px;
-        }
-        .arrArticoli:hover {
-            cursor: pointer;
-            color: firebrick;
-        }
-        .hiddenElement {
-            visibility: hidden;
-        }
-
-        @media screen {
-
-            #stampa {
-                position: fixed;
-                z-index: 100;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                background: #FFF;
-                border-top: solid 1px;
-                font-size: 36px;
-            }
-        .noMargin {
-        padding: 6px 12px;
-        margin: 0;
-        line-height: 1.42857143;
-        height: 34px;
-        }
-
-            body {
-                max-width: 1400px;
-                margin: auto;
-            }
-        }
-        @media print {
-        .noMargin {
-        margin: 0 0 0;
-        }
-        .form-control {
-        display: inline-block;
-        width: auto;
-        }
-        select.form-control {
-        position: relative !important;
-        top: -1px !important;
-        z-index: 1;
-        }
-        input[type=number],
-        input[type=text],
-        input[type=date],
-        select.form-control,
-        input[type=datetime], #nota {
-        border: none;
-        background: transparent;
-        box-shadow: none;
-        height: 13px;
-        padding-left: 0;
-        padding-right: 0;
-        margin: 0 0 0;
-        font-size: 7pt;
-        position: relative;
-        top: -1px;
-        width: auto;
-        }
-        p {
-        font-size: 7pt;
-        //height: 13px;
-        }
-        .logo {
-        max-width: 100%;
-        width: 100px;
-        height: auto;
-        }
-        #sottotabella {
-        border: none !important;
-        border-collapse: collapse;
-        }
-        page {
-        size: a4;
-        }
-        .qnt {
-            min-height: 6cm;
-        }
-        .var {
-        height: 3cm;
-        }
-        .stampa {
-        display: none;
-        }
-        }
-        .autocomplete-suggestions {
-            color: #000000
-        }
-
-        .autocomplete-suggestions {
-            border: 1px solid #999;
-            background: #FFF;
-            overflow: auto;
-        }
-
-        .autocomplete-suggestion {
-            padding: 2px 5px;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .autocomplete-selected {
-            background: #F0F0F0;
-        }
-
-        .autocomplete-suggestions strong {
-            font-weight: normal;
-            color: #3399FF;
-        }
-
-        .autocomplete-group {
-            padding: 2px 5px;
-        }
-
-        .autocomplete-group strong {
-            display: block;
-            border-bottom: 1px solid #000;
-        }
-
-        .valuta:before {
-            content: "\f153 ";
-            font-family: FontAwesome;
-            position: relative;
-            margin-right: 5px;
-        }
-
-        .form-control {
-            margin: 0;
-            padding: 0;
-        }
-
-        @media print {
-            p {
-                font-size: 7pt;
-            }
-
-            .smaller {
-                font-size: 5pt;
-            }
-            .logo {
-                max-width: 100%;
-                width: 100px;
-                height: auto;
-            }
-
-            #sottotabella {
-                border: none !important;
-                border-collapse: collapse;
-            }
-
-            page {
-                size: a4;
-            }
-
-            .qnt {
-                min-height: 6cm;
-            }
-
-            .var {
-                height: 3cm;
-            }
-
-            #stampa {
-                display: none;
-            }
-        }
-
-        #controlloQuery {
-            position: fixed;
-            top: 50px;
-            right: 15px;
-            z-index: 100;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -468,7 +277,7 @@ if ((isset($post)) == true) {
                     <td style="text-align:right"><p>Totale parziale €</p></td>
                     <td>
                         <input id="parziale" class="form-control " style="text-align:right" type="text"
-                               placeholder="auto da colonna €" <?php if (isset($parziale)) echo "value='" . round($parziale, 2) . "'" ?>
+                               placeholder="auto da colonna €" <?php if (isset($parziale)) echo "value='" . str_replace(".", ",", $parziale) . "'" ?>
                                readonly>
                     </td>
                 </tr>
@@ -495,7 +304,7 @@ if ((isset($post)) == true) {
                     <td style="text-align:right"><p><strong>Totale dovuto €</strong></p></td>
                     <td>
                         <input id="totaleDovuto" class="form-control" style="text-align:right" type="text"
-                               placeholder="auto da colonna €" <?php if (isset($totale)) echo "value='" . round($totale, 2) . "'" ?>
+                               placeholder="auto da colonna €" <?php if (isset($totale)) echo "value='" . str_replace(".", ",", $totale) . "'" ?>
                                readonly>
                     </td>
                 </tr>
@@ -527,7 +336,8 @@ if ((isset($post)) == true) {
 
 <script>
     var memory = <?php echo $memory ?>;
-    var sommaDDT = 0; <?php //echo $DDTarray ?>;
+    var sommaDDT = 0;
+    <?php //echo $DDTarray ?>
     var idRiga = <?php echo $idRiga ?>;
     var controlloClick = 1;
     var codCliente = "<?php if (isset($codC)) { echo $codC; } ?>";
@@ -568,17 +378,18 @@ if ((isset($post)) == true) {
                 if (execute === true) {
 
                     var tr = "<tr id=ordini-"+ idRiga +" class=\"borderless\">";
+                    var prezzoFloat = parseFloat(suggestion.data.prezzo).toFixed(2);
 
                     tr += "<td><input id=\"idQuantita-" + idRiga + "\" type=\"number\" class=\"form-control arrQuantita\" min=\"1\" value=\"1\"></td>";
 
                     tr += "<td><p class=\"col-xs-12 arrArticoli noMargin\" id=\"idArticoli-" + idRiga + "\" >" + suggestion.data.descr + " - " + suggestion.data.misura + "</p></td>";
 
 
-                    tr += "<td><p class=\"valuta col-xs-10 noMargin\" id=\"prezzo-" + idRiga + "\">" + parseFloat(suggestion.data.prezzo).toFixed(2) + "</p></td>";
+                    tr += "<td><p class=\"valuta col-xs-10 noMargin\" id=\"prezzo-" + idRiga + "\">" + prezzoFloat.replace(".",",") + "</p></td>";
 
-                    tr += "<td><p class=\"valuta col-xs-10 noMargin\" id=\"prezzoTOT-" + idRiga + "\">" + parseFloat(suggestion.data.prezzo).toFixed(2) + "</p></td>";
+                    tr += "<td><p class=\"valuta col-xs-10 noMargin\" id=\"prezzoTOT-" + idRiga + "\">" + prezzoFloat.replace(".",",") + "</p></td>";
 
-                    tr += '<input type="hidden" id="tipologia-'+ idRiga +'" value="' + suggestion.data.tipologia + '">'
+                    tr += '<input type="hidden" id="tipologia-'+ idRiga +'" value="' + suggestion.data.tipologia + '">';
                     $(".qnt").after(tr);
 
                     prezziTot($("#idQuantita-" + idRiga));
@@ -617,20 +428,20 @@ if ((isset($post)) == true) {
         //controlla tipologia
 
         /*  Normale
-        *   Scaglione
+         *   Scaglione
 
-            Es. 19458 etichette. verrà scritto quantità 20000 (manualmente) = (20000/1000) * 11.64 [quantità/1000 * pr.unitarioSCAGLIONE]
+         Es. 19458 etichette. verrà scritto quantità 20000 (manualmente) = (20000/1000) * 11.64 [quantità/1000 * pr.unitarioSCAGLIONE]
 
 
-        *   Stock
-        */
+         *   Stock
+         */
 
         if (tipologia == "Normale" || tipologia == undefined) {
-            prezzoTotale = quantitaScelta * (parseFloat(prezzoUnitario));
+            prezzoTotale = quantitaScelta * (parseFloat(commaReplace(prezzoUnitario)));
         }
 
         if (tipologia == "Scaglione") {
-            prezzoTotale = ((quantitaScelta / 1000) * (parseFloat(prezzoUnitario)));
+            prezzoTotale = ((quantitaScelta / 1000) * (parseFloat(commaReplace(prezzoUnitario))));
         }
 
         if (tipologia == "Stock") {
@@ -638,23 +449,27 @@ if ((isset($post)) == true) {
         }
 
         prezzoTotID = $("#prezzoTOT-" + quantitaId[1]);
-        prezzoTotID.text(prezzoTotale.toFixed(2));
+        prezzoTotale = prezzoTotale.toFixed(2);
+        prezzoTotID.text(prezzoTotale.replace(".",","));
+        console.log(prezzoTotale);
         var selectPrezzi = $("p[id*=prezzoTOT-]");
         //console.log(selectPrezzi.length);
         //console.log(selectPrezzi);
         var somma = 0;
         for (var i = 0; i < selectPrezzi.length; i++) {
             //console.log(selectPrezzi[i]);
-            prezzoDaSommare = parseFloat(selectPrezzi[i].textContent);
-            //console.log(prezzoDaSommare);
-            somma += prezzoDaSommare;
+            prezzoDaSommare = parseFloat(commaReplace(selectPrezzi[i].textContent));
+            console.log("prezzo da sommare " + prezzoDaSommare);
+            somma += parseFloat(prezzoDaSommare.toFixed(2));
 
         }
-        somma += sommaDDT;
-        $("#parziale").val(somma.toFixed(2));
+        somma += parseFloat(sommaDDT);
+
+        $("#parziale").val(dotReplace(somma.toFixed(2)));
         var iva = $("#iva").val();
         iva = somma * (iva / 100);
-        $("#totaleDovuto").val((somma + iva).toFixed(2));
+        var totaleDovuto = (somma + iva).toFixed(2);
+        $("#totaleDovuto").val(totaleDovuto.replace(".",","));
     }
 
     $(".arrQuantita, #iva").click(function () {
@@ -719,11 +534,10 @@ if ((isset($post)) == true) {
                         <tr class="ddt-` + suggestion.data.num +` borderless" id="DDT-` + (i +1) + `" class="borderless">
                         <td><input type="number" readonly class="form-control arrQuantita" value="`+ suggestion.data.arr_qta[i] + `"></td>
                         <td><p class="col-xs-12 noMargin">    `+ suggestion.data.arr_beni[i] + `</p></td>
-                        <td><p class="col-xs-12 noMargin valuta">`+ suggestion.data.arr_prezzi[i] + `</p></td>
-                        <td><p class="col-xs-12 noMargin valuta">`+ suggestion.data.arr_prezzi_tot[i] + `</p>
+                        <td><p class="col-xs-12 noMargin valuta">`+ dotReplace(suggestion.data.arr_prezzi[i]) + `</p></td>
+                        <td><p class="col-xs-12 noMargin valuta">`+ dotReplace(suggestion.data.arr_prezzi_tot[i]) + `</p>
                         </tr>`;
-                    };
-
+                    }
                 $(".qnt").before(ddt);
                 $("#nota").val(($("#nota").val()) + suggestion.data.note + "\n");
                 sommaDDT += suggestion.data.somma;
@@ -785,10 +599,10 @@ if ((isset($post)) == true) {
             arrayPrezziCad: ciclaArray($("p[id*=prezzo-]"), "textContent"),
             arrayPrezzi: ciclaArray($("p[id*=prezzoTOT-]"), "textContent"),
             tipologie: ciclaArray($("input[id*=tipologia-]"), "value"),
-            parziale: $("#parziale").val(),
+            parziale: $("#parziale").val().replace(",","."),
             iva: $("#iva").val(),
             note: $("#nota").val(),
-            totaleDovuto: $("#totaleDovuto").val(),
+            totaleDovuto: $("#totaleDovuto").val().replace(",","."),
             esenteNum: $("#esenteNum").val(),
             esIvaDal: $("#esIvaDal").val(),
             esIvaAl: $("#esIvaAl").val(),
@@ -876,6 +690,14 @@ if ((isset($post)) == true) {
         return text.replace(/[&<>"']/g, function (m) {
             return map[m];
         });
+    }
+
+    function dotReplace(punto) {
+        return punto.replace(".",",")
+    }
+
+    function commaReplace(comma) {
+        return comma.replace(",",".")
     }
 
 

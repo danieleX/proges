@@ -1,0 +1,196 @@
+
+body {
+    padding-bottom: 60px;
+}
+
+.borderless td {
+    border-top: none !important;
+    border-bottom: none !important;
+    height: auto;
+    padding-bottom: 0px;
+}
+.arrArticoli:hover {
+    cursor: pointer;
+    color: firebrick;
+}
+.hiddenElement {
+    visibility: hidden;
+}
+
+@media screen {
+
+    #stampa {
+        position: fixed;
+        z-index: 100;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background: #FFF;
+        border-top: solid 1px;
+        font-size: 36px;
+    }
+    .noMargin {
+        padding: 6px 12px;
+        margin: 0;
+        line-height: 1.42857143;
+        height: 34px;
+    }
+
+    body {
+        max-width: 1400px;
+        margin: auto;
+    }
+}
+@media print {
+    .noMargin {
+        margin: 0 0 0;
+    }
+    .form-control {
+        display: inline-block;
+        width: auto;
+    }
+    select.form-control {
+        position: relative !important;
+        top: -1px !important;
+        z-index: 1;
+    }
+    input[type=number],
+    input[type=text],
+    input[type=date],
+    select.form-control,
+    input[type=datetime], #nota {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        height: 13px;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0 0 0;
+        font-size: 7pt;
+        position: relative;
+        top: -1px;
+        width: auto;
+    }
+    p {
+        font-size: 7pt;
+    //height: 13px;
+    }
+    .logo {
+        max-width: 100%;
+        width: 100px;
+        height: auto;
+    }
+    #sottotabella {
+        border: none !important;
+        border-collapse: collapse;
+    }
+    page {
+        size: a4;
+    }
+    .qnt {
+        min-height: 6cm;
+    }
+    .var {
+        height: 3cm;
+    }
+    .stampa {
+        display: none;
+    }
+}
+.autocomplete-suggestions {
+    color: #000000
+}
+
+.autocomplete-suggestions {
+    border: 1px solid #999;
+    background: #FFF;
+    overflow: auto;
+}
+
+.autocomplete-suggestion {
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.autocomplete-selected {
+    background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+    font-weight: normal;
+    color: #3399FF;
+}
+
+.autocomplete-group {
+    padding: 2px 5px;
+}
+
+.autocomplete-group strong {
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+.valuta:before {
+    content: "\f153 ";
+    font-family: FontAwesome;
+    position: relative;
+    margin-right: 5px;
+}
+
+.form-control {
+    margin: 0;
+    padding: 0;
+}
+
+@media print {
+    p {
+        font-size: 7pt;
+    }
+
+    .smaller {
+        font-size: 5pt;
+    }
+    .logo {
+        max-width: 100%;
+        width: 100px;
+        height: auto;
+    }
+
+    #sottotabella {
+        border: none !important;
+        border-collapse: collapse;
+    }
+
+    page {
+        size: a4;
+    }
+
+    .qnt {
+        min-height: 6cm;
+    }
+
+    .var {
+        height: 3cm;
+    }
+
+    #stampa {
+        display: none;
+    }
+    #nota {
+        width: 100%;
+        height: auto;
+        position: relative;
+        right: -15px;
+        left: -15px;
+    }
+}
+
+#controlloQuery {
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    z-index: 100;
+}

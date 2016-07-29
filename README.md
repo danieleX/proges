@@ -1,3 +1,13 @@
+#Changelog 29/07/2016
+### Query di ricerca
+- __Lista articoli :__ Ora è possibile ricercare gli articoli in base al cliente
+### Virgole, punti... nzoccu vo' tu
+I punti sono stati sostituiti dalle virgole.
+### Note
+Le aree di testo riportano nella stampa tutto il testo e non solo il primo rigo (bug)
+### Codice cliente
+Il codice cliente è la prima cosa da inserire, **non è modificabile**.
+Se necessario, il cliente può essere cancellato e ricreato.
 #Changelog 14/07/2016
 
 ###Database

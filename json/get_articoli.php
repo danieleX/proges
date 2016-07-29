@@ -13,7 +13,13 @@ else $check = "Nessuna query";
 
 
 
-$query = "SELECT * FROM articoli WHERE misura LIKE \"%" . $check . "%\" OR descr LIKE \"%" . $check . "%\" OR cod_barre LIKE \"%" . $check . "%\" OR prezzo LIKE \"%" . $check . "%\" OR cod_int LIKE \"%" . $check . "%\"";
+$query = "SELECT * FROM articoli WHERE 
+misura LIKE \"%" . $check . "%\" OR 
+descr LIKE \"%" . $check . "%\" OR 
+cod_barre LIKE \"%" . $check . "%\" OR 
+prezzo LIKE \"%" . $check . "%\" OR 
+cod_int LIKE \"%" . $check . "%\" OR
+cliente LIKE \"%" . $check . "%\"";
 
 //print_r($query);
 if ((isset($_GET["page"])) && (isset($_GET["limit"]))) {

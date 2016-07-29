@@ -56,6 +56,11 @@ if ($insert["azione"] === "modifica") {
         tipologia='" . mysqli_real_escape_string($conndb, $insert["tipologie"]) . "'";
     }
 
+    if ($stampa == "preventivo") {
+        $sql .= ",
+        tipologia='" . mysqli_real_escape_string($conndb, $insert["tipologie"]) . "'";
+    }
+
     if ($stampa == "ndc") {
         $sql .= " 
         arr_tipologia='" . mysqli_real_escape_string($conndb, $insert["tipologie"]) . "', 
@@ -140,7 +145,7 @@ if ($insert["azione"] === "modifica") {
 
     if ($stampa == "preventivo") {
         $sql = "INSERT INTO stampa_" . $stampa . " 
-            (id, codC, data_doc, pagamento, cliente, Piva, indirizzo, citta, prov, cap, arr_qta, arr_beni, arr_imp_uni, arr_importo, tot_parziale, tot_dovuto, iva, note) values
+            (id, codC, data_doc, pagamento, cliente, Piva, indirizzo, citta, prov, cap, arr_qta, arr_beni, arr_imp_uni, arr_importo, tot_parziale, tot_dovuto, iva, tipologia, note) values
             ('" . $doc_n . "',
             '" . mysqli_real_escape_string($conndb, $insert["codC"]) . "',
             '" . mysqli_real_escape_string($conndb, $insert["data"]) . "',
@@ -158,7 +163,9 @@ if ($insert["azione"] === "modifica") {
             '" . mysqli_real_escape_string($conndb, $insert["parziale"]) . "',
             '" . mysqli_real_escape_string($conndb, $insert["totaleDovuto"]) . "',
             '" . mysqli_real_escape_string($conndb, $insert["iva"]) . "',
-            '" . mysqli_real_escape_string($conndb, $insert["note"]) . "')";
+            '" . mysqli_real_escape_string($conndb, $insert["tipologie"]) . "',
+            '" . mysqli_real_escape_string($conndb, $insert["note"]) . "')"
+        ;
     }
     //echo "/*".$sql."*/";
 }
